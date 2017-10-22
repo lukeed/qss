@@ -13,20 +13,20 @@ rollup({
 	bun.write({
 		format: 'cjs',
 		file: pkg.main,
-		exports: 'named'
+		exports: 'default'
 	});
 
 	bun.write({
 		format: 'es',
 		file: pkg.module,
-		exports: 'named'
+		exports: 'default'
 	});
 
 	bun.write({
 		file: umd,
 		format: 'umd',
 		name: pkg.name,
-		exports: 'named'
+		exports: 'default'
 	}).then(_ => {
 		const data = fs.readFileSync(umd, 'utf8');
 
