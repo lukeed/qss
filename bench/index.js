@@ -1,12 +1,18 @@
 const Table = require('cli-table2');
+const native = require('querystring');
 const { Suite } = require('benchmark');
-//
-const curr = require('../lib');
+const queryString = require('query-string');
+const querystringify = require('querystringify');
+const curr = require('../dist/qss');
 
 const bench = new Suite();
+const obj = { foo:123, bar:[4,5,6] };
 
 bench
-	.add('qss', () => curr(args))
+	.add('qss', () => curr(obj))
+	.add('native', () => native.stringify(obj))
+	.add('query-string', () => queryString.stringify(obj))
+	.add('querystringify', () => querystringify.stringify(obj))
 	// .add('qss (previous)', () => previous(args))
 	.on('cycle', e => console.log(String(e.target)))
 	.on('complete', function() {
