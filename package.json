@@ -4,9 +4,11 @@
   "description": "WIP",
   "license": "MIT",
   "repository": "lukeed/qss",
-  "main": "lib/index.js",
+  "umd:main": "dist/qss.min.js",
+  "module": "dist/qss.es.js",
+  "main": "dist/qss.js",
   "files": [
-    "lib"
+    "dist"
   ],
   "author": {
     "name": "Luke Edwards",
@@ -18,12 +20,18 @@
   },
   "scripts": {
     "bench": "node bench",
+    "build": "node builder",
+    "pretest": "npm run build",
+    "prebench": "npm run build",
     "test": "tape test/*.js | tap-spec"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "devDependencies": {
+    "gzip-size": "^4.0.0",
+    "pretty-bytes": "^4.0.2",
+    "rollup": "^0.50.0",
     "tap-spec": "^4.1.1",
-    "tape": "^4.6.3"
+    "tape": "^4.6.3",
+    "uglify-js": "^3.1.5"
   }
 }
