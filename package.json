@@ -25,7 +25,18 @@
     "prebench": "npm run build",
     "test": "tape test/*.js | tap-spec"
   },
-  "keywords": [],
+  "keywords": [
+    "qs",
+    "query",
+    "string",
+    "browser",
+    "stringify",
+    "querystring",
+    "query-string",
+    "parameter",
+    "encode",
+    "param"
+  ],
   "devDependencies": {
     "gzip-size": "^4.0.0",
     "pretty-bytes": "^4.0.2",
