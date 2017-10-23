@@ -1,5 +1,3 @@
-'use strict';
-
 const test = require('tape');
 const q = require('querystring');
 const fn = require('../dist/qss');
