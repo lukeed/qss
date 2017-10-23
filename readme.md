@@ -56,13 +56,13 @@ An optional prefix. The stringified `params` will be appended to this value, so 
 
 ```
 qss
-  --> 1,177,339 ops/sec ±0.25% (96 runs sampled)
+  --> 1,218,706 ops/sec ±0.24% (94 runs sampled)
 native
-  --> 4,298,475 ops/sec ±0.36% (96 runs sampled)
+  --> 4,271,253 ops/sec ±0.84% (93 runs sampled)
 query-string
-  --> 263,307 ops/sec ±1.03% (88 runs sampled)
+  --> 267,467 ops/sec ±0.88% (90 runs sampled)
 querystringify
-  --> 1,040,005 ops/sec ±0.26% (96 runs sampled)
+  --> 1,046,418 ops/sec ±0.23% (94 runs sampled)
 ```
 
 ## License
