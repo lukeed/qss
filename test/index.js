@@ -26,6 +26,14 @@ test('simple - multiple', t => {
 	t.end();
 });
 
+test('boolean', t => {
+	let obj = { foo:true, bar:false };
+	let out = fn(obj);
+	t.is(out, 'foo=true&bar=false', 'returns expected value');
+	t.is(out, native(obj), 'matches native value');
+	t.end();
+});
+
 test('array', t => {
 	let obj = { foo:[1,2,3] };
 	let out = fn(obj);
