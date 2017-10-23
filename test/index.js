@@ -51,3 +51,13 @@ test('array - nested', t => {
 	t.not(out, val, 'does NOT match native value');
 	t.end();
 });
+
+test('prefix', t => {
+	let foo = fn({ foo:123, bar:'baz' }, '?');
+	t.is(foo, '?foo=123&bar=baz', 'treats second args as prefix');
+	let bar = fn({ foo:123 }, false);
+	t.is(bar, 'foo=123', 'ignores falsey prefixes');
+	let baz = fn({ foo:123 }, 'http://baz.com/a/b/c?');
+	t.is(baz, 'http://baz.com/a/b/c?foo=123', 'keeps entire prefix');
+	t.end();
+});
