@@ -1,6 +1,6 @@
 {
   "name": "qss",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A tiny (222b) browser utility for stringifying a query Object.",
   "license": "MIT",
   "repository": "lukeed/qss",
