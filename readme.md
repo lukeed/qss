@@ -6,7 +6,7 @@ You should only consider using this within a browser context since Node's built-
 
 This module exposes three module definitions:
 
-* **ES Module**: `dist/qss.es.js`
+* **ES Module**: `dist/qss.mjs`
 * **CommonJS**: `dist/qss.js`
 * **UMD**: `dist/qss.min.js`
 
