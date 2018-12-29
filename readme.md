@@ -21,22 +21,28 @@ $ npm install --save qss
 ## Usage
 
 ```js
-import qss from 'qss';
+import { encode, decode } from 'qss';
 
-qss({ foo:'hello', bar:[1,2,3], baz:true });
+encode({ foo:'hello', bar:[1,2,3], baz:true });
 //=> 'foo=hello&bar=1&bar=2&bar=3&baz=true'
 
-qss({ foo:123 }, '?');
+encode({ foo:123 }, '?');
 //=> '?foo=123'
 
-qss({ bar:'world' }, 'foo=hello&');
+encode({ bar:'world' }, 'foo=hello&');
 //=> 'foo=hello&bar=world'
+
+decode('foo=hello&bar=1&bar=2&bar=3&baz=true');
+//=> { foo:'hello', bar:[1,2,3], baz:true };
 ```
 
 
 ## API
 
-### qss(params, prefix)
+### qss.encode(params, prefix)
+Returns: `String`
+
+Returns the formatted querystring.
 
 #### params
 Type: `Object`
@@ -51,18 +57,45 @@ An optional prefix. The stringified `params` will be appended to this value, so 
 
 > **Important:** No checks or validations will run on your `prefix`. Similarly, no character is used to "glue" the query string to your `prefix` string.
 
+### qss.decode(query)
+Returns: `Object`
+
+Returns an Object with decoded keys and values.
+
+Repetitive keys will form an Array of its values. Also, `qss` will attempt to typecast `Boolean` and `Number` values.
+
+#### query
+Type: `String`
+
+The query string, without its leading `?` character.
+
+```js
+qss.decode(
+  location.search.substring(1) // removes the "?"
+);
+```
+
 
 ## Benchmarks
 
+> Running Node v10.13.0
+
+***Encode***
+
 ```
-qss
-  --> 1,218,706 ops/sec ±0.24% (94 runs sampled)
-native
-  --> 4,271,253 ops/sec ±0.84% (93 runs sampled)
-query-string
-  --> 267,467 ops/sec ±0.88% (90 runs sampled)
-querystringify
-  --> 1,046,418 ops/sec ±0.23% (94 runs sampled)
+qss             x 1,114,662 ops/sec ±0.23% (94 runs sampled)
+native          x 5,329,564 ops/sec ±0.56% (91 runs sampled)
+query-string    x   345,668 ops/sec ±1.18% (97 runs sampled)
+querystringify  x   922,295 ops/sec ±0.73% (93 runs sampled)
+```
+
+***Decode***
+
+```
+qss             x 456,666 ops/sec ±0.86% (95 runs sampled)
+native          x 195,820 ops/sec ±0.47% (91 runs sampled)
+query-string    x 200,192 ops/sec ±0.25% (98 runs sampled)
+querystringify  x 301,697 ops/sec ±0.69% (96 runs sampled)
 ```
 
 ## License
