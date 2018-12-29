@@ -1,4 +1,4 @@
-export default function (obj, pfx) {
+export function encode(obj, pfx) {
 	var k, i, tmp, str='';
 
 	for (k in obj) {
