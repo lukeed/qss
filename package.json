@@ -2,7 +2,7 @@
   "name": "qss",
   "version": "1.0.2",
   "repository": "lukeed/qss",
-  "description": "A tiny (182b) browser utility for stringifying a query Object.",
+  "description": "A tiny (294B) browser utility for stringifying a query Object.",
   "unpkg": "dist/qss.min.js",
   "module": "dist/qss.mjs",
   "main": "dist/qss.js",
