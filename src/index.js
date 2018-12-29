@@ -17,3 +17,26 @@ export function encode(obj, pfx) {
 
 	return (pfx || '') + str;
 }
+
+function toValue(mix) {
+	var str = decodeURIComponent(mix);
+	if (str === 'true') return true;
+	if (str === 'false') return false;
+	return (+str * 0 === 0) ? (+str) : str;
+}
+
+export function decode(str) {
+	var tmp, k, out={}, arr=str.split('&');
+
+	while (tmp = arr.shift()) {
+		tmp = tmp.split('=');
+		k = tmp.shift();
+		if (out[k] !== void 0) {
+			out[k] = [].concat(out[k], toValue(tmp.shift()));
+		} else {
+			out[k] = toValue(tmp.shift());
+		}
+	}
+
+	return out;
+}
