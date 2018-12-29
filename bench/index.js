@@ -1,38 +1,29 @@
-const Table = require('cli-table2');
 const native = require('querystring');
 const { Suite } = require('benchmark');
 const queryString = require('query-string');
 const querystringify = require('querystringify');
-const curr = require('../dist/qss');
+const { encode, decode } = require('../dist/qss');
 
-const bench = new Suite();
+const foo = new Suite();
+const bar = new Suite();
+
 const obj = { foo:123, bar:[4,5,6] };
+const str = 'foo=123&bar=4&bar=5&bar=6&baz=true';
 
-bench
-	.add('qss', () => curr(obj))
-	.add('native', () => native.stringify(obj))
-	.add('query-string', () => queryString.stringify(obj))
-	.add('querystringify', () => querystringify.stringify(obj))
-	// .add('qss (previous)', () => previous(args))
+console.log('\nEncode:');
+foo
+	.add('querystringify ', () => querystringify.stringify(obj))
+	.add('query-string   ', () => queryString.stringify(obj))
+	.add('native         ', () => native.stringify(obj))
+	.add('qss            ', () => encode(obj))
 	.on('cycle', e => console.log(String(e.target)))
-	.on('complete', function() {
-		console.log('Fastest is ' + this.filter('fastest').map('name'));
+	.run();
 
-		const tbl = new Table({
-			head: ['Name', 'Mean time', 'Ops/sec', 'Diff']
-		});
-
-		let prev, diff;
-
-		bench.forEach(el => {
-			if (prev) {
-				diff = ((el.hz - prev) * 100 / prev).toFixed(2) + '% faster';
-			} else {
-				diff = 'N/A'
-			}
-			prev = el.hz;
-			tbl.push([el.name, el.stats.mean, el.hz.toLocaleString(), diff])
-		});
-		console.log(tbl.toString());
-	})
+console.log('\nDecode:');
+bar
+	.add('querystringify ', () => querystringify.parse(str))
+	.add('query-string   ', () => queryString.parse(str))
+	.add('native         ', () => native.parse(str))
+	.add('qss            ', () => decode(str))
+	.on('cycle', e => console.log(String(e.target)))
 	.run();
