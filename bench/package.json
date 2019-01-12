@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "benchmark": "^2.1.4",
+    "qs": "^6.6.0",
     "query-string": "^5.0.0",
     "querystringify": "^1.0.0"
   }
