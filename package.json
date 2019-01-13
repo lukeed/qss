@@ -6,8 +6,8 @@
   "unpkg": "dist/qss.min.js",
   "module": "dist/qss.mjs",
   "main": "dist/qss.js",
-  "license": "MIT",
   "types": "qss.d.ts",
+  "license": "MIT",
   "files": [
     "*.d.ts",
     "dist"
