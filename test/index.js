@@ -114,3 +114,20 @@ test('(decode) booleans', t => {
 	t.not(out, val, 'does NOT match native value');
 	t.end();
 });
+
+test('(decode) empty', t => {
+	let str1 = 'foo=&bar=';
+	let out1 = decode(str1);
+	let val1 = parse(str1);
+	t.is(typeof out1, 'object', 'returns an object');
+	t.same(out1, { foo:'', bar:'' }, '~> is expected value');
+	t.same(out1, parse(str1), 'matches native value');
+
+	let str2 = 'foo&bar';
+	let out2 = decode(str2);
+	let val2 = parse(str2);
+	t.is(typeof out2, 'object', 'returns an object');
+	t.same(out2, { foo:'', bar:'' }, '~> is expected value');
+	t.same(out2, parse(str2), 'matches native value');
+	t.end();
+});

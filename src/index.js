@@ -19,9 +19,10 @@ export function encode(obj, pfx) {
 }
 
 function toValue(mix) {
+	if (!mix) return '';
 	var str = decodeURIComponent(mix);
-	if (str === 'true') return true;
 	if (str === 'false') return false;
+	if (str === 'true') return true;
 	return (+str * 0 === 0) ? (+str) : str;
 }
 
