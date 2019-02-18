@@ -93,6 +93,17 @@ test('(decode) numbers', t => {
 	t.end();
 });
 
+test('(decode) floats', t => {
+	let str = 'foo=1&bar=1.3&bar=2.01&bar=2.0&baz=19.111';
+	let out = decode(str);
+	let val = parse(str);
+	t.is(typeof out, 'object', 'returns an object');
+	t.same(out, { foo:1, bar:[1.3, 2.01, 2.0], baz: 19.111 }, '~> is expected value');
+	t.same(val, { foo:'1', bar:['1.3', '2.01', '2.0'], baz:'19.111' }, '>> assert native value, for reference');
+	t.not(out, val, 'does NOT match native value');
+	t.end();
+});
+
 test('(decode) booleans', t => {
 	let str = 'foo=true&bar=false&bar=true';
 	let out = decode(str);
