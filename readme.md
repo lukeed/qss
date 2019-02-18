@@ -1,6 +1,6 @@
 # qss [![Build Status](https://travis-ci.org/lukeed/qss.svg?branch=master)](https://travis-ci.org/lukeed/qss)
 
-> A tiny (294B) browser utility for stringifying a query Object.
+> A tiny (305B) browser utility for stringifying a query Object.
 
 You should only consider using this within a browser context since Node's built-in [`querystring.stringify`](https://nodejs.org/api/querystring.html#querystring_querystring_stringify_obj_sep_eq_options) is [much faster](#benchmarks) and _should be_ used in a Node environment! An ideal use case is serializing a query object before an API request is sent.
 
