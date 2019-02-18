@@ -83,12 +83,12 @@ test('(decode) simple', t => {
 });
 
 test('(decode) numbers', t => {
-	let str = 'foo=1&bar=1&bar=2';
+	let str = 'foo=1&bar=1&bar=2&baz=0';
 	let out = decode(str);
 	let val = parse(str);
 	t.is(typeof out, 'object', 'returns an object');
-	t.same(out, { foo:1, bar:[1, 2] }, '~> is expected value');
-	t.same(val, { foo:'1', bar:['1', '2'] }, '>> assert native value, for reference');
+	t.same(out, { foo:1, bar:[1, 2], baz:0 }, '~> is expected value');
+	t.same(val, { foo:'1', bar:['1', '2'], baz: '0' }, '>> assert native value, for reference');
 	t.not(out, val, 'does NOT match native value');
 	t.end();
 });
