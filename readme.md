@@ -83,21 +83,21 @@ qss.decode(
 ***Encode***
 
 ```
-qss             x 1,104,287 ops/sec ±0.18% (96 runs sampled)
-native          x 5,420,126 ops/sec ±0.21% (94 runs sampled)
-querystringify  x   958,591 ops/sec ±0.64% (95 runs sampled)
-query-string    x   347,465 ops/sec ±1.05% (91 runs sampled)
-qs              x   729,840 ops/sec ±0.62% (92 runs sampled)
+qss             x 1,112,341 ops/sec ±0.24% (96 runs sampled)
+native          x 5,303,246 ops/sec ±0.76% (95 runs sampled)
+querystringify  x   950,501 ops/sec ±0.76% (96 runs sampled)
+query-string    x   347,603 ops/sec ±1.05% (92 runs sampled)
+qs              x   733,449 ops/sec ±0.62% (97 runs sampled)
 ```
 
 ***Decode***
 
 ```
-qss             x 454,177 ops/sec ±0.17% (93 runs sampled)
-native          x 189,677 ops/sec ±0.45% (94 runs sampled)
-querystringify  x 300,793 ops/sec ±0.15% (96 runs sampled)
-query-string    x 197,520 ops/sec ±0.71% (97 runs sampled)
-qs              x 178,188 ops/sec ±0.34% (97 runs sampled)
+qss             x   443,667 ops/sec ±0.17% (95 runs sampled)
+native          x   189,194 ops/sec ±0.44% (94 runs sampled)
+querystringify  x   282,169 ops/sec ±0.26% (96 runs sampled)
+query-string    x   191,334 ops/sec ±0.71% (95 runs sampled)
+qs              x   168,165 ops/sec ±0.41% (93 runs sampled)
 ```
 
 ## License
