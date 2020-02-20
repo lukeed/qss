@@ -57,17 +57,27 @@ An optional prefix. The stringified `params` will be appended to this value, so 
 
 > **Important:** No checks or validations will run on your `prefix`. Similarly, no character is used to "glue" the query string to your `prefix` string.
 
-### qss.decode(query)
+### qss.decode(query, typecastBooleans, typecastNumbers)
 Returns: `Object`
 
-Returns an Object with decoded keys and values.
-
-Repetitive keys will form an Array of its values. Also, `qss` will attempt to typecast `Boolean` and `Number` values.
+Returns an Object with decoded keys and values. Repetitive keys will form an Array of its values.
 
 #### query
 Type: `String`
 
 The query string, without its leading `?` character.
+
+#### typecastBooleans
+Type: `Boolean`
+Default: `true`
+
+An optional Boolean typecast override. `qss` will attempt to typecast `Boolean` values by default.
+
+#### typecastNumbers
+Type: `Boolean`
+Default: `true`
+
+An optional Numbers typecast override. `qss` will attempt to typecast `Number` values by default.
 
 ```js
 qss.decode(
