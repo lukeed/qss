@@ -67,7 +67,7 @@ Repetitive keys will form an Array of its values. Also, `qss` will attempt to ty
 #### query
 Type: `String`
 
-The query string, without its leading `?` character.
+The query string, with or without its leading `?` character.
 
 ```js
 qss.decode(
@@ -78,26 +78,26 @@ qss.decode(
 
 ## Benchmarks
 
-> Running Node v10.13.0
+> Running Node v14.5.0
 
 ***Encode***
 
 ```
-qss             x 1,112,341 ops/sec ±0.24% (96 runs sampled)
-native          x 5,303,246 ops/sec ±0.76% (95 runs sampled)
-querystringify  x   950,501 ops/sec ±0.76% (96 runs sampled)
-query-string    x   347,603 ops/sec ±1.05% (92 runs sampled)
-qs              x   733,449 ops/sec ±0.62% (97 runs sampled)
+qss             x 1,151,789 ops/sec ±0.66% (89 runs sampled)
+native          x 4,432,282 ops/sec ±1.47% (90 runs sampled)
+querystringify  x   644,980 ops/sec ±0.70% (93 runs sampled)
+query-string    x   209,326 ops/sec ±0.63% (94 runs sampled)
+qs              x   514,285 ops/sec ±0.68% (89 runs sampled)
 ```
 
 ***Decode***
 
 ```
-qss             x   443,667 ops/sec ±0.17% (95 runs sampled)
-native          x   189,194 ops/sec ±0.44% (94 runs sampled)
-querystringify  x   282,169 ops/sec ±0.26% (96 runs sampled)
-query-string    x   191,334 ops/sec ±0.71% (95 runs sampled)
-qs              x   168,165 ops/sec ±0.41% (93 runs sampled)
+qss             x   504,873 ops/sec ±3.95% (87 runs sampled)
+native          x 1,148,267 ops/sec ±0.68% (94 runs sampled)
+querystringify  x   193,010 ops/sec ±0.94% (91 runs sampled)
+query-string    x   138,808 ops/sec ±1.15% (90 runs sampled)
+qs              x   137,275 ops/sec ±0.77% (94 runs sampled)
 ```
 
 ## License
