@@ -1,43 +1,36 @@
 export function encode(obj, pfx) {
-	var k, i, tmp, str='';
+	let params = new URLSearchParams();
 
-	for (k in obj) {
-		if ((tmp = obj[k]) !== void 0) {
-			if (Array.isArray(tmp)) {
-				for (i=0; i < tmp.length; i++) {
-					str && (str += '&');
-					str += encodeURIComponent(k) + '=' + encodeURIComponent(tmp[i]);
-				}
-			} else {
-				str && (str += '&');
-				str += encodeURIComponent(k) + '=' + encodeURIComponent(tmp);
+	Object.entries(obj).forEach(([k, v]) => {
+		if (Array.isArray(v)) {
+			for (let i = 0; i < v.length; i++) {
+				params.append(k, v[i]);
 			}
+		} else {
+			params.append(k, v);
 		}
-	}
+	});
 
-	return (pfx || '') + str;
+	return `${(pfx || '')}${params}`;
 }
 
-function toValue(mix) {
-	if (!mix) return '';
-	var str = decodeURIComponent(mix);
+function toValue(str) {
+	if (!str) return '';
 	if (str === 'false') return false;
 	if (str === 'true') return true;
 	return (+str * 0 === 0) ? (+str) : str;
 }
 
 export function decode(str) {
-	var tmp, k, out={}, arr=str.split('&');
+	let out = {};
 
-	while (tmp = arr.shift()) {
-		tmp = tmp.split('=');
-		k = tmp.shift();
-		if (out[k] !== void 0) {
-			out[k] = [].concat(out[k], toValue(tmp.shift()));
+	(new URLSearchParams(str)).forEach((v, k) => {
+		if (out[k] !== undefined) {
+			out[k] = [].concat(out[k], toValue(v));
 		} else {
-			out[k] = toValue(tmp.shift());
+			out[k] = toValue(v);
 		}
-	}
+	});
 
 	return out;
 }
