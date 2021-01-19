@@ -42,6 +42,10 @@
   "devDependencies": {
     "bundt": "^0.1.1",
     "tap-spec": "^5.0.0",
-    "tape": "^4.9.1"
+    "tape": "^4.9.1",
+    "benchmark": "^2.1.4",
+    "qs": "^6.9.6",
+    "query-string": "^6.13.8",
+    "querystringify": "^2.2.0"
   }
 }
