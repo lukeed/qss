@@ -131,3 +131,12 @@ test('(decode) empty', t => {
 	t.same(out2, parse(str2), 'matches native value');
 	t.end();
 });
+
+test('(decode) decode key', t => {
+	let str = '%20foo=foo';
+	let out = decode(str);
+	t.is(typeof out, 'object', 'returns an object');
+	t.same(out, { ' foo':'foo' }, '~> is expected value');
+	t.same(out, parse(str), 'matches native value');
+	t.end();
+});
