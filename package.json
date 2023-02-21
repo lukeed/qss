@@ -7,6 +7,9 @@
   "module": "dist/qss.m.js",
   "main": "dist/qss.js",
   "types": "qss.d.ts",
+  "exports": {
+    "import": "./dist/qss.mjs"
+  },
   "license": "MIT",
   "files": [
     "*.d.ts",
