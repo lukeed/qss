@@ -8,7 +8,17 @@
   "main": "dist/qss.js",
   "types": "qss.d.ts",
   "exports": {
-    "import": "./dist/qss.mjs"
+    ".": {
+      "import": "./dist/qss.m.js",
+      "require": "./dist/qss.js",
+      "default": "./dist/qss.js"
+    },
+    "./dist/qss.mjs": "./dist/qss.mjs",
+    "./dist/qss.js": "./dist/qss.js",
+    "./dist/qss.min.js": "./dist/qss.min.js",
+    "./dist/qss.m.js": "./dist/qss.m.js",
+    "./qss.d.ts": "./qss.d.ts",
+    "./package.json": "./package.json"
   },
   "license": "MIT",
   "files": [
