@@ -7,7 +7,6 @@
   "module": "dist/qss.mjs",
   "main": "dist/qss.js",
   "types": "qss.d.ts",
-  "type": "module",
   "exports": {
     ".": {
       "import": "./dist/qss.mjs",
