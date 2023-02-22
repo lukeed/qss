@@ -4,20 +4,20 @@
   "repository": "lukeed/qss",
   "description": "A tiny (305B) browser utility for stringifying a query Object.",
   "unpkg": "dist/qss.min.js",
-  "module": "dist/qss.m.js",
+  "module": "dist/qss.mjs",
   "main": "dist/qss.js",
   "types": "qss.d.ts",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/qss.m.js",
-      "require": "./dist/qss.js",
+      "import": "./dist/qss.mjs",
+      "require": "./dist/qss.cjs",
       "default": "./dist/qss.js"
     },
     "./dist/qss.mjs": "./dist/qss.mjs",
+    "./dist/qss.cjs": "./dist/qss.cjs",
     "./dist/qss.js": "./dist/qss.js",
     "./dist/qss.min.js": "./dist/qss.min.js",
-    "./dist/qss.m.js": "./dist/qss.m.js",
     "./qss.d.ts": "./qss.d.ts",
     "./package.json": "./package.json"
   },
@@ -35,7 +35,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "build": "bundt",
+    "build": "bundt && cp dist/qss.js dist/qss.cjs",
     "bench": "node bench",
     "pretest": "npm run build",
     "prebench": "npm run build",
