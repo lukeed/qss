@@ -7,20 +7,15 @@
   "module": "dist/qss.mjs",
   "main": "dist/qss.js",
   "types": "qss.d.ts",
+  "license": "MIT",
   "exports": {
     ".": {
+      "types": "./qss.d.ts",
       "import": "./dist/qss.mjs",
-      "require": "./dist/qss.cjs",
-      "default": "./dist/qss.js"
+      "require": "./dist/qss.js"
     },
-    "./dist/qss.mjs": "./dist/qss.mjs",
-    "./dist/qss.cjs": "./dist/qss.cjs",
-    "./dist/qss.js": "./dist/qss.js",
-    "./dist/qss.min.js": "./dist/qss.min.js",
-    "./qss.d.ts": "./qss.d.ts",
     "./package.json": "./package.json"
   },
-  "license": "MIT",
   "files": [
     "*.d.ts",
     "dist"
@@ -34,10 +29,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "build": "bundt && cp dist/qss.js dist/qss.cjs",
-    "bench": "node bench",
-    "pretest": "npm run build",
-    "prebench": "npm run build",
+    "build": "bundt",
     "test": "tape test/*.js | tap-spec"
   },
   "keywords": [
