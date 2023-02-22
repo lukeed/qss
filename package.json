@@ -45,7 +45,7 @@
     "param"
   ],
   "devDependencies": {
-    "bundt": "^0.1.1",
+    "bundt": "0.2.1",
     "tap-spec": "^5.0.0",
     "tape": "^4.9.1"
   }
