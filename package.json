@@ -1,6 +1,6 @@
 {
   "name": "qss",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "repository": "lukeed/qss",
   "description": "A tiny (305B) browser utility for stringifying a query Object.",
   "unpkg": "dist/qss.min.js",
