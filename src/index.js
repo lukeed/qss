@@ -31,7 +31,7 @@ export function decode(str) {
 
 	while (tmp = arr.shift()) {
 		tmp = tmp.split('=');
-		k = tmp.shift();
+		k = decodeURIComponent(tmp.shift());
 		if (out[k] !== void 0) {
 			out[k] = [].concat(out[k], toValue(tmp.shift()));
 		} else {
