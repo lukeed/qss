@@ -18,24 +18,26 @@ export function encode(obj, pfx) {
 	return (pfx || '') + str;
 }
 
-function toValue(mix) {
+function toValue(mix,tcBools,tcNumbers) {
 	if (!mix) return '';
 	var str = decodeURIComponent(mix);
-	if (str === 'false') return false;
-	if (str === 'true') return true;
-	return (+str * 0 === 0) ? (+str) : str;
+	if (tcBools && str === 'false') return false;
+	if (tcBools && str === 'true') return true;
+	return (tcNumbers && +str * 0 === 0) ? (+str) : str;
 }
 
-export function decode(str) {
+export function decode(str,tcBools,tcNumbers) {
 	var tmp, k, out={}, arr=str.split('&');
+	tcBools = typeof tcBools !== 'undefined' ? tcBools : true;
+	tcNumbers = typeof tcNumbers !== 'undefined' ? tcNumbers : true;
 
 	while (tmp = arr.shift()) {
 		tmp = tmp.split('=');
 		k = tmp.shift();
 		if (out[k] !== void 0) {
-			out[k] = [].concat(out[k], toValue(tmp.shift()));
+			out[k] = [].concat(out[k], toValue(tmp.shift(),tcBools,tcNumbers));
 		} else {
-			out[k] = toValue(tmp.shift());
+			out[k] = toValue(tmp.shift(),tcBools,tcNumbers);
 		}
 	}
 
