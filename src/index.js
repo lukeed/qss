@@ -1,3 +1,5 @@
+var isSafeInteger = Number.isSafeInteger;
+
 export function encode(obj, pfx) {
 	var k, i, tmp, str='';
 
@@ -23,7 +25,9 @@ function toValue(mix) {
 	var str = decodeURIComponent(mix);
 	if (str === 'false') return false;
 	if (str === 'true') return true;
-	return (+str * 0 === 0) ? (+str) : str;
+	
+	var num = +str;
+	return (num * 0 === 0 && isSafeInteger(num)) ? num : str;
 }
 
 export function decode(str) {
