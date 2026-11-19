@@ -20,7 +20,8 @@ export function encode(obj, pfx) {
 
 function toValue(mix) {
 	if (!mix) return '';
-	var str = decodeURIComponent(mix);
+	var str = decodeURIComponent(mix.replace(/\+/g, ' '));
+	if (!str.trim()) return str;
 	if (str === 'false') return false;
 	if (str === 'true') return true;
 	return (+str * 0 === 0) ? (+str) : str;
