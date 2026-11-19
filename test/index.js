@@ -131,3 +131,11 @@ test('(decode) empty', t => {
 	t.same(out2, parse(str2), 'matches native value');
 	t.end();
 });
+
+test('(decode) spaces', t => {
+	let str = 'foo=+&bar=%20&baz=%2B&qux=a+b';
+	let out = decode(str);
+	t.same(out, { foo:' ', bar:' ', baz:'+', qux:'a b' }, '~> is expected value');
+	t.same(out, parse(str), 'matches native value');
+	t.end();
+});
